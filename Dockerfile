@@ -6,7 +6,8 @@ COPY pom.xml .
 RUN mvn dependency:go-offline
 
 # Теперь копируем исходники
-COPY src ./src
+COPY src src
+
 
 # Собираем проект
 RUN mvn clean package -DskipTests
