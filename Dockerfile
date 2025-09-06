@@ -1,4 +1,4 @@
-FROM maven:3.9.9-eclipse-temurin-17 AS build
+FROM maven:3.9.9-eclipse-temurin-21 AS build
 WORKDIR /app
 
 # Сначала скопируем pom.xml и подкачаем зависимости (кэшируется)
@@ -13,7 +13,7 @@ COPY src src
 RUN mvn clean package -DskipTests
 
 # --- Runtime образ ---
-FROM eclipse-temurin:17
+FROM eclipse-temurin:21
 WORKDIR /app
 COPY --from=build /app/target/*.jar app.jar
 CMD ["java", "-jar", "app.jar"]
