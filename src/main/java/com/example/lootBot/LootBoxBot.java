@@ -21,12 +21,12 @@ public class LootBoxBot extends TelegramLongPollingBot {
 
     @Override
     public String getBotUsername() {
-        return "OneDay_Chenalbot"; // укажи имя бота
+        return System.getenv("BOT_NAME"); // укажи имя бота
     }
 
     @Override
     public String getBotToken() {
-        return "7603105133:AAGcGeTNzDxMlEwKmrgLAkFcZgS3XmzIzxI"; // вставь токен от BotFather
+        return System.getenv("BOT_TOKEN"); // вставь токен от BotFather
     }
 
     @Override
