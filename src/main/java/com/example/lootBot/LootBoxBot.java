@@ -40,7 +40,7 @@ public class LootBoxBot extends TelegramLongPollingBot {
             switch (text) {
                 case "/start" -> sendText(chatId, "Привет! У тебя " + coins.get(chatId) + " монет.");
                 case "/balance" -> sendText(chatId, "Баланс: " + coins.get(chatId));
-                case "/addBalance" -> {
+                case "/add_balance" -> {
                     addBalance(chatId, 100);
                     sendText(chatId, "Добавлено на счет" + 100 + "\n Cейчас у вас:" + coins.get(chatId));
                 }
