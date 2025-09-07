@@ -21,12 +21,12 @@ public class LootBoxBot extends TelegramLongPollingBot {
 
     @Override
     public String getBotUsername() {
-        return System.getenv("BOT_NAME"); // укажи имя бота
+        return "OneDay_Chenalbot"; // укажи имя бота
     }
 
     @Override
     public String getBotToken() {
-        return System.getenv("BOT_TOKEN"); // вставь токен от BotFather
+        return "7603105133:AAGcGeTNzDxMlEwKmrgLAkFcZgS3XmzIzxI"; // вставь токен от BotFather
     }
 
     @Override
@@ -35,11 +35,15 @@ public class LootBoxBot extends TelegramLongPollingBot {
             long chatId = update.getMessage().getChatId();
             String text = update.getMessage().getText();
 
-            coins.putIfAbsent(chatId, 100); // стартовый баланс
+            coins.putIfAbsent(chatId, 60); // стартовый баланс
 
             switch (text) {
                 case "/start" -> sendText(chatId, "Привет! У тебя " + coins.get(chatId) + " монет.");
                 case "/balance" -> sendText(chatId, "Баланс: " + coins.get(chatId));
+                case "/addBalance" -> {
+                    addBalance(chatId, 100);
+                    sendText(chatId, "Добавлено на счет" + 100 + "\n Cейчас у вас:" + coins.get(chatId));
+                }
                 case "/buy" -> buyChest(chatId);
                 default -> sendText(chatId, "Команды: /start, /balance, /buy");
             }
@@ -92,6 +96,10 @@ public class LootBoxBot extends TelegramLongPollingBot {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private void addBalance(long chatId, int money) {
+        coins.put(chatId, money);
     }
 
     public static void main(String[] args) throws Exception {
