@@ -1,0 +1,17 @@
+telegram:
+  bot:
+    username: OneDay_ChenalBot
+    token: 7603105133:AAGcGeTNzDxMlEwKmrgLAkFcZgS3XmzIzxI
+
+waifu:
+  api: https://api.waifu.pics/sfw/waifu
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/antonwin
+    username: antonwin
+    password: admin1234
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
